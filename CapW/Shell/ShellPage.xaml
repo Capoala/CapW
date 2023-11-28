@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="CapW.Shell.ShellPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:CapW.Shell"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:navigation="using:CapW.Navigation"
+      mc:Ignorable="d">
+
+  <Page.Resources>
+    <DataTemplate x:Key="NavigationItemMenuItemTemplate"
+                  x:DataType="navigation:NavigationItemViewModel">
+      <NavigationViewItem Content="{x:Bind Name, Mode=OneWay}"
+                          Tag="{x:Bind Name, Mode=OneWay}"
+                          MenuItemsSource="{x:Bind Children, Mode=OneWay}"
+                          SelectsOnInvoked="{x:Bind Children, Converter={StaticResource TrueWhenCollectionIsEmpty}}">
+        <NavigationViewItem.Icon>
+          <FontIcon FontFamily="{Binding GlyphFont, Mode=OneWay, TargetNullValue={StaticResource NavigationViewIconDefaultFontFamily}}"
+                    Glyph="{x:Bind Glyph, Mode=OneWay}" />
+        </NavigationViewItem.Icon>
+      </NavigationViewItem>
+    </DataTemplate>
+  </Page.Resources>
+
+  <Grid>
+
+    <Grid x:Name="AppTitleBar"
+          Canvas.ZIndex="-9999999"
+          Height="48"
+          IsHitTestVisible="True"
+          VerticalAlignment="Top"
+          HorizontalAlignment="Stretch">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition x:Name="PART_LeftPaddingColumn"
+                          Width="0" />
+        <ColumnDefinition x:Name="PART_ButtonsHolderColumn"
+                          Width="0" />
+        <ColumnDefinition x:Name="PART_IconColumn"
+                          Width="Auto" />
+        <ColumnDefinition x:Name="PART_TitleColumn"
+                          Width="Auto" />
+        <ColumnDefinition x:Name="PART_LeftDragColumn"
+                          Width="*"
+                          MinWidth="4" />
+        <ColumnDefinition x:Name="PART_ContentColumn"
+                          Width="Auto" />
+        <ColumnDefinition x:Name="PART_RightDragColumn"
+                          Width="*"
+                          MinWidth="4" />
+        <ColumnDefinition x:Name="PART_FooterColumn"
+                          Width="Auto" />
+        <ColumnDefinition x:Name="PART_RightPaddingColumn"
+                          Width="0" />
+      </Grid.ColumnDefinitions>
+      <Border Grid.Column="0" />
+      <Border Grid.Column="1" />
+      <Border Grid.Column="2">
+        <Image x:Name="AppTitleBarIcon"
+               Source="/Assets/StoreLogo.png"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+               Width="16"
+               Height="16"
+               Margin="0 0 8 0"
+               Visibility="Visible" />
+      </Border>
+      <Border Grid.Column="3">
+        <TextBlock x:Name="AppTitleBarText"
+                   VerticalAlignment="Center"
+                   TextWrapping="NoWrap"
+                   Style="{StaticResource CaptionTextBlockStyle}"
+                   Text="Capoala WinUI Template" />
+      </Border>
+      <Border Grid.Column="4" />
+      <Border Grid.Column="5" />
+      <Border Grid.Column="6" />
+      <Border Grid.Column="7" />
+    </Grid>
+
+    <NavigationView x:Name="ShellNavigationView"
+                    PaneDisplayMode="Auto"
+                    IsBackEnabled="False"
+                    IsBackButtonVisible="Collapsed"
+                    MenuItemTemplate="{StaticResource NavigationItemMenuItemTemplate}"
+                    Loaded="OnNavigationViewLoaded">
+      <Grid>
+        <ScrollViewer Padding="{StaticResource NavigationViewContentRightMarginPadding}">
+          <Frame x:Name="ShellNavigationViewContentFrame" />
+        </ScrollViewer>
+      </Grid>
+    </NavigationView>
+
+  </Grid>
+
+</Page>

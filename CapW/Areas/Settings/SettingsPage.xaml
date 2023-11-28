@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="CapW.Areas.Settings.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:CapW.Areas.Settings"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+  <StackPanel Spacing="8">
+
+    <toolkit:SettingsCard Header="Theme">
+      <ComboBox x:Name="ApplicationThemeSelection"
+                VerticalAlignment="Center"
+                KeyTipPlacementMode="Bottom">
+        <ComboBoxItem x:Name="LightThemeSelection"
+                      Content="Light"
+                      Tag="Light" />
+        <ComboBoxItem x:Name="DarkThemeSelection"
+                      Content="Dark"
+                      Tag="Dark" />
+        <ComboBoxItem x:Name="DefaultThemeSelection"
+                      Content="Use system setting"
+                      Tag="Default" />
+      </ComboBox>
+    </toolkit:SettingsCard>
+
+    <toolkit:SettingsExpander Header="{Binding AppName, Mode=OneWay}"
+                              IsExpanded="True">
+      <toolkit:SettingsExpander.HeaderIcon>
+        <ImageIcon Source="/Assets/StoreLogo.png" />
+      </toolkit:SettingsExpander.HeaderIcon>
+      <TextBlock Text="{Binding AppVersion, Mode=OneWay}"
+                 Foreground="{ThemeResource TextFillColorSecondary}" />
+      <toolkit:SettingsExpander.Items>
+        <toolkit:SettingsCard Header="App Version">
+          <TextBlock Text="{Binding FullAppVersion, Mode=OneWay}"
+                     Foreground="{ThemeResource TextFillColorSecondary}" />
+        </toolkit:SettingsCard>
+        <toolkit:SettingsCard Header="App Id">
+          <TextBlock Text="{Binding AppId, Mode=OneWay}"
+                     Foreground="{ThemeResource TextFillColorSecondary}" />
+        </toolkit:SettingsCard>
+        <toolkit:SettingsCard Header="Powered by">
+          <TextBlock Text="{Binding RuntimeVersion, Mode=OneWay}"
+                     Foreground="{ThemeResource TextFillColorSecondary}" />
+        </toolkit:SettingsCard>
+      </toolkit:SettingsExpander.Items>
+    </toolkit:SettingsExpander>
+
+  </StackPanel>
+
+</Page>

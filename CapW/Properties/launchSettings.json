@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CapW (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "CapW (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

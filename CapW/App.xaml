@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application x:Class="CapW.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:CapW"
+             xmlns:toolkit="using:CommunityToolkit.WinUI"
+             xmlns:toolkitConverters="using:CommunityToolkit.WinUI.Converters"
+             xmlns:win11ContractPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,14)"
+             xmlns:win11ContractNotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,14)">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+      </ResourceDictionary.MergedDictionaries>
+
+      <!-- 
+          The first key is the magic sauce that pulls down the NavigationView content piece, giving that nice seamless experience.
+          The actual top margin should be that of the AppTileBar. We define 48 along with the "Tall" requested option for the AppTileBar.
+          That said, we set 47 here instead, as it always seems to be one pixel off when hovering over the caption buttons.
+
+          The remaining keys provide additional alignments for the navigation content.
+      -->
+      <Thickness x:Key="NavigationViewContentMargin">0 47 0 0</Thickness>
+      <Thickness x:Key="NavigationViewHeaderMargin">56 48 0 0</Thickness>
+      <Thickness x:Key="NavigationViewContentPresenterMargin">56 24 0 0</Thickness>
+      <Thickness x:Key="NavigationViewContentGridBorderThickness">1 1 0 0</Thickness>
+
+      <!-- 
+          Useful for allowing situations where we don't want to hard-code a content
+          margin (for situations involving scrollviewers), but we also want to use 
+          standardized spacing where it makes sense.
+      -->
+      <Thickness x:Key="NavigationViewContentRightMarginPadding">0 0 56 0</Thickness>
+      <Thickness x:Key="NavigationViewContentRightAndBottomMarginPadding">0 0 56 56</Thickness>
+
+      <!-- Fonts -->
+      <x:String x:Key="NavigationViewIconDefaultFontFamily">Segoe Fluent Icons,Segoe MDL2 Assets</x:String>
+
+      <!-- 
+          When setting all key values to "SubtleFillColorTransparentBrush",
+          this provides the full mica background color, experience.
+
+          By default, we want to see the distinction between the navigation and title bar and the page content.
+          To achieve this, we set the "ApplicationPageBackgroundThemeBrush" to "SolidBackgroundFillColorTransparent",
+          which then effectively uses "NavigationViewContentBackground" as the background color. Due to the layering
+          of Mica, this is the best approach to achieve the desired effect.
+      -->
+      <StaticResource x:Key="ApplicationPageBackgroundThemeBrush"
+                      ResourceKey="SolidBackgroundFillColorTransparent" />
+      <!--<StaticResource x:Key="ApplicationPageBackgroundThemeBrush"
+                      ResourceKey="SubtleFillColorTransparentBrush" />-->
+      <!--<StaticResource x:Key="NavigationViewContentBackground"
+                      ResourceKey="SubtleFillColorTransparentBrush" />
+      <StaticResource x:Key="NavigationViewContentGridBorderBrush"
+                      ResourceKey="SubtleFillColorTransparentBrush" />-->
+
+      <!-- 
+          Converters 
+      -->
+      <toolkitConverters:BoolToVisibilityConverter x:Key="VisibleWhenTrueConverter"
+                                                   TrueValue="Visible"
+                                                   FalseValue="Collapsed" />
+      <toolkitConverters:BoolToVisibilityConverter x:Key="CollapsedWhenTrueConverter"
+                                                   TrueValue="Collapsed"
+                                                   FalseValue="Visible" />
+      <toolkitConverters:EmptyCollectionToObjectConverter x:Key="FalseWhenCollectionIsEmpty"
+                                                          EmptyValue="False"
+                                                          NotEmptyValue="True" />
+      <toolkitConverters:EmptyCollectionToObjectConverter x:Key="TrueWhenCollectionIsEmpty"
+                                                          EmptyValue="True"
+                                                          NotEmptyValue="False" />
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>
