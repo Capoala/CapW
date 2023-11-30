@@ -13,6 +13,10 @@
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
+    <ItemGroup>
+      <None Remove="Areas\Stuff\SomeStuffPage.xaml" />
+      <None Remove="Controls\StuffAndDetails.xaml" />
+    </ItemGroup>
 
     <ItemGroup>
         <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -72,6 +76,16 @@
   -->
     <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
         <ProjectCapability Include="Msix" />
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Areas\Stuff\SomeStuffPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Controls\StuffAndDetails.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
 
     <!-- 

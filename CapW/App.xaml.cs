@@ -1,9 +1,18 @@
-﻿namespace CapW;
+﻿using CapW.Areas.Stuff;
+using CapW.Navigation;
+
+namespace CapW;
 
 public partial class App : Application
 {
     public App()
     {
+        this.UnhandledException += (sender, e) =>
+        {
+            // Log or inspect e.Exception
+            System.Diagnostics.Debug.WriteLine(e.Exception.Message);
+        };
+
         this.InitializeComponent();
 
         Ioc.Default.ConfigureServices(
@@ -16,6 +25,8 @@ public partial class App : Application
                 .AddTransient<HomePageViewModel>()
                 .AddSingleton<SettingsPage>()
                 .AddSingleton<SettingsPageViewModel>()
+                .AddSingleton<SomeStuffPage>()
+                .AddSingleton<SomeStuffViewModel>()
                 .AddSingleton<IStorageService, StorageService>()
                 .AddSingleton<ThemeService>()
                 .AddSingleton<INavigationService>(_ =>
@@ -23,6 +34,7 @@ public partial class App : Application
                     return new NavigationService(
                         navigationItems: [
                             new NavigationItemViewModel<HomePage>("Home", "\uE80F"),
+                            new NavigationItemViewModel<SomeStuffPage>("Stuff", "\uE726"),
                             new NavigationItemViewModel<HomePage>("Children", "\uEA37", children: [
                                 new NavigationItemViewModel<HomePage>("Child One", "\uE726"),
                                 new NavigationItemViewModel<HomePage>("Child Two", "\uE726"),
@@ -58,4 +70,5 @@ public partial class App : Application
 
         mainWindow.Activate();
     }
+
 }

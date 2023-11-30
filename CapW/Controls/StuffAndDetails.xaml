@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl x:Class="CapW.Controls.StuffAndDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:CapW.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+
+  <Grid RowSpacing="16">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <CommandBar Grid.Row="0"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                LightDismissOverlayMode="Off"
+                DefaultLabelPosition="Right">
+      <CommandBar.Content>
+        <AutoSuggestBox x:Name="SearchBox"
+                        QueryIcon="Find"
+                        PlaceholderText="Search..."
+                        MinWidth="200" />
+      </CommandBar.Content>
+      <CommandBar.PrimaryCommands>
+        <AppBarButton Label="New"
+                      Icon="Add"
+                      Command="{x:Bind AddNewItemCommand}" />
+      </CommandBar.PrimaryCommands>
+      <CommandBar.SecondaryCommands>
+        <AppBarButton Label="Delete"
+                      Icon="Delete"
+                      Command="{x:Bind DeleteSelectedItemCommand}"/>
+      </CommandBar.SecondaryCommands>
+    </CommandBar>
+    <Grid Grid.Row="1"
+          ColumnSpacing="16">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" MinWidth="200" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <ListView x:Name="Stuff"
+                Grid.Column="0"
+                ItemsSource="{x:Bind ItemsSource}"
+                SelectedItem="{x:Bind SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                ItemTemplate="{x:Bind ItemTemplate}"
+                SelectionMode="Single" />
+      <ContentControl x:Name="Details"
+                      Grid.Column="1"
+                      Content="{x:Bind SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      ContentTemplate="{x:Bind DetailsTemplate}"
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Stretch" />
+    </Grid>
+  </Grid>
+
+</UserControl>
