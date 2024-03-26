@@ -1,0 +1,12 @@
+﻿<Project>
+
+  <!--
+    This target is used to set the SourceRevisionId property to the output of the git describe command.
+    -->
+  <Target Name="SetSourceRevisionId" BeforeTargets="InitializeSourceControlInformation">
+    <Exec Command="git describe --long --always --abbrev=40" ConsoleToMSBuild="True" IgnoreExitCode="True">
+      <Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput" />
+    </Exec>
+  </Target>
+
+</Project>

@@ -1,0 +1,45 @@
+﻿<Project>
+
+  <!-- App SDK -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
+  </ItemGroup>
+
+  <!-- Community Toolkit -->
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Common" />
+    <PackageReference Include="CommunityToolkit.Diagnostics" />
+    <PackageReference Include="CommunityToolkit.HighPerformance" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="CommunityToolkit.WinUI.Animations" />
+    <PackageReference Include="CommunityToolkit.WinUI.Behaviors" />
+    <PackageReference Include="CommunityToolkit.WinUI.Collections" />
+    <PackageReference Include="CommunityToolkit.WinUI.Converters" />
+    <PackageReference Include="CommunityToolkit.WinUI.DeveloperTools" />
+    <PackageReference Include="CommunityToolkit.WinUI.Extensions" />
+    <PackageReference Include="CommunityToolkit.WinUI.Helpers" />
+    <PackageReference Include="CommunityToolkit.WinUI.Media" />
+    <PackageReference Include="CommunityToolkit.WinUI.Triggers" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.CameraPreview" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.HeaderedControls" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.ImageCropper" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.LayoutTransformControl" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.MetadataControl" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.RadialGauge" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.RangeSelector" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.RichSuggestBox" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.Segmented" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.Sizers" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.TokenizingTextBox" />
+  </ItemGroup>
+
+  <!-- Dependency Injection -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+  </ItemGroup>
+
+</Project>

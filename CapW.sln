@@ -5,12 +5,6 @@ VisualStudioVersion = 17.9.34310.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CapW", "CapW\CapW.csproj", "{85E65341-1D59-42D9-833B-1F4ED7A66704}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{281C0C1B-AF02-44ED-ABE5-E8240C4EEEC0}"
-	ProjectSection(SolutionItems) = preProject
-		LICENSE.txt = LICENSE.txt
-		README.md = README.md
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
